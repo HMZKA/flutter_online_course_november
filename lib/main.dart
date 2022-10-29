@@ -32,29 +32,71 @@ class MyApp extends StatelessWidget {
               Icon(Icons.call)
             ],
           ),
-          body: Center(
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(60),
-                  // color: Colors.green[600],
-                  gradient: LinearGradient(
-                      colors: [Colors.red, Colors.black, Colors.amber],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight)
-                  // shape: BoxShape.circle
+          body: Container(
+            color: Colors.orange,
+            width: double.infinity,
+            padding: EdgeInsets.only(top: 12, left: 8),
+            margin: EdgeInsets.all(12.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // 1+1+1+1=4
+                // 1/4
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    color: Colors.black,
+                    child: Text(
+                      'My First Text',
+                      style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.amber,
+                          // backgroundColor: Colors.black,
+                          fontWeight: FontWeight.w600),
+                    ),
                   ),
-              width: 250,
-              height: 200,
-              child: Center(
-                child: Text(
-                  'My First Project',
-                  style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.amber,
-                      // backgroundColor: Colors.black,
-                      fontWeight: FontWeight.w600),
                 ),
-              ),
+                Expanded(
+                  child: Container(
+                    color: Colors.red,
+                    child: Text(
+                      'My Second Text',
+                      style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.grey,
+                          // backgroundColor: Colors.black,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    color: Colors.blueAccent,
+                    child: Text(
+                      'My Third Text',
+                      style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.white,
+                          // backgroundColor: Colors.black,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    color: Colors.greenAccent,
+                    child: Text(
+                      'My Fourth Text',
+                      style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.teal,
+                          // backgroundColor: Colors.black,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                )
+              ],
             ),
           ),
         ),
