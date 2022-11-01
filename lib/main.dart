@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_online_course/home_screen.dart';
-import 'package:flutter_online_course/image_screen.dart';
+import 'package:flutter_online_course/login_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ImageScreen(),
+      home: LoginScreen(),
     );
   }
 }
