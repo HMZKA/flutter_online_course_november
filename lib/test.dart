@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_online_course/messenger_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+class TestScreen extends StatefulWidget {
+  const TestScreen({super.key});
+
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<TestScreen> createState() => _TestScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _TestScreenState extends State<TestScreen> {
   @override
   void initState() {
     // TODO: implement initState
@@ -14,6 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool isScure = true;
   var icon = Icons.remove_red_eye;
+  int x = 0;
   @override
   Widget build(BuildContext context) {
     var formKey = GlobalKey<FormState>();
@@ -37,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   Text(
-                    'Login',
+                    'Test Login',
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.w700,
@@ -103,7 +107,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextButton(
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                          print('done');
+                          // Navigator.of(context).pushAndRemoveUntil(
+                          //     MaterialPageRoute(
+                          //       builder: (context) => MessngerScreen(),
+                          //     ),
+                          //     (route) => false);
+
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => MessngerScreen(),
+                          ));
                         }
                       },
                       child: Container(
@@ -127,9 +139,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         "Don't have account?",
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
-                      TextButton(onPressed: () {}, child: Text('Register'))
+                      TextButton(
+                          onPressed: () {
+                            setState(() {
+                              x++;
+                            });
+                          },
+                          child: Text('Register'))
                     ],
-                  )
+                  ),
+                  Text('${x}')
                 ],
               ),
             ),
