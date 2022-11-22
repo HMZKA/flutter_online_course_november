@@ -2,6 +2,8 @@ abstract class AppStates {}
 
 class AppInitState extends AppStates {}
 
+class AppBottomNavBarchangeState extends AppStates {}
+
 class AppGetBusinessSucceedState extends AppStates {}
 
 class AppGetBusinessErrorState extends AppStates {}
