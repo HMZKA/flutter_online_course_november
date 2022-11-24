@@ -16,8 +16,8 @@ class MainScreen extends StatelessWidget {
         var cubit = AppCubit().get(context);
         return Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.white,
-            foregroundColor: Colors.black,
+            backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+            foregroundColor: Theme.of(context).appBarTheme.foregroundColor,
             title: Text('NewsApp'),
             actions: [
               IconButton(

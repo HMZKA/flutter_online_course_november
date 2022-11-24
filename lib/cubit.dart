@@ -28,7 +28,7 @@ class AppCubit extends Cubit<AppStates> {
       'apiKey': 'a269e4f1de864efc85f38b36f1bae318'
     }).then((value) {
       businessModel = NewsModel.fromJson(value?.data);
-      print(businessModel?.articles[5].title);
+
       emit(AppGetBusinessSucceedState());
     }).catchError((error) {
       print(error.toString());
@@ -49,6 +49,22 @@ class AppCubit extends Cubit<AppStates> {
     }).catchError((error) {
       print(error.toString());
       emit(AppGetSportErrorState());
+    });
+  }
+
+  NewsModel? searchModel;
+  getSearch(search) {
+    emit(AppGetSearchLoadingState());
+    DioHelper.getData('everything', {
+      'q': search,
+      'apiKey': 'a269e4f1de864efc85f38b36f1bae318'
+    }).then((value) {
+      searchModel = NewsModel.fromJson(value?.data);
+      print(searchModel?.articles[0].title);
+      emit(AppGetSearchSucceedState());
+    }).catchError((error) {
+      print(error.toString());
+      emit(AppGetSearchErrorState());
     });
   }
 }

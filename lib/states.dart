@@ -15,3 +15,9 @@ class AppGetSportSucceedState extends AppStates {}
 class AppGetSportErrorState extends AppStates {}
 
 class AppGetSportLoadingState extends AppStates {}
+
+class AppGetSearchSucceedState extends AppStates {}
+
+class AppGetSearchErrorState extends AppStates {}
+
+class AppGetSearchLoadingState extends AppStates {}
