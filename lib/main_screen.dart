@@ -29,6 +29,12 @@ class MainScreen extends StatelessWidget {
                     builder: (context) => SearchScreen(),
                   ));
                 },
+              ),
+              IconButton(
+                icon: Icon(Icons.brightness_4),
+                onPressed: () {
+                  cubit.changeTheme();
+                },
               )
             ],
           ),

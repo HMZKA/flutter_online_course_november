@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_online_course/business_screen.dart';
+import 'package:flutter_online_course/chache_helper.dart';
 import 'package:flutter_online_course/dio_helper.dart';
 import 'package:flutter_online_course/news_model.dart';
 import 'package:flutter_online_course/other_screen.dart';
@@ -66,5 +67,12 @@ class AppCubit extends Cubit<AppStates> {
       print(error.toString());
       emit(AppGetSearchErrorState());
     });
+  }
+
+  bool isDark = CacheHelper.getData('isDark') ?? false;
+  changeTheme() {
+    isDark = !isDark;
+    CacheHelper.setDataBool('isDark', isDark).then((value) => print(value));
+    emit(AppChangeThemeState());
   }
 }
