@@ -1,12 +1,15 @@
 import 'package:dio/dio.dart';
 
 class DioHelper {
-  static Dio? ourDio;
+  static Dio? dio;
   static init() {
-    ourDio = Dio(BaseOptions(baseUrl: 'https://newsapi.org/v2/'));
+    dio = Dio(BaseOptions(
+        baseUrl: 'https://student.valuxapps.com/api/',
+        headers: {'lang': 'ar', 'Content-Type': 'application/json'}));
   }
 
-  static Future<Response?> getData(path, Map<String, dynamic> query) async {
-    return ourDio?.get(path, queryParameters: query);
+  static Future<Response?> postData(path, data,
+      {Map<String, dynamic>? query}) async {
+    return dio?.post(path, queryParameters: query, data: data);
   }
 }
