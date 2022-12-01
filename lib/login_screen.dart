@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_online_course/home_screen.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'cubit/app_cubit.dart';
@@ -17,13 +18,18 @@ class LoginScreen extends StatelessWidget {
       listener: (context, state) {
         if (state is AppLoginSuccessState) {
           Fluttertoast.showToast(
-              msg: "login done Successfully",
+              msg: "${AppCubit().get(context).profileModel?.message}",
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.BOTTOM,
               timeInSecForIosWeb: 1,
               backgroundColor: Colors.green,
               textColor: Colors.white,
               fontSize: 16.0);
+          if (AppCubit().get(context).profileModel!.status!) {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => HomeScreen(),
+            ));
+          }
         }
       },
       builder: (context, state) {
