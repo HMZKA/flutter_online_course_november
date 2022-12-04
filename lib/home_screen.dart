@@ -1,32 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_online_course/image.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+
+import 'cubit/locale_cubit.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('HomeScreen')),
-      body: GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 3,
-        children: List.generate(
-            images.length,
-            (index) => InkWell(
-                  onTap: () {
-                    print(images[index]);
+    return BlocConsumer<LocaleCubit, LocaleState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return Scaffold(
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            backgroundColor: Colors.black38,
+            title: Text('${AppLocalizations.of(context)?.login}'),
+            actions: [
+              PopupMenuButton(
+                  onSelected: (value) {
+                    LocaleCubit().get(context).changeLang(value);
                   },
-                  child: Image.asset('${images[index]}'),
-                )),
-        // children: images
-        //     .map((e) => InkWell(
-        //         onTap: () {
-        //           print(e.toString());
-        //         },
-        //         child: Image.asset('${e}')))
-        //     .toList(),
-      ),
+                  itemBuilder: (context) => AppLocalizations.supportedLocales
+                      .map((e) => PopupMenuItem(
+                            child: Text('${e}'),
+                            value: e,
+                          ))
+                      .toList())
+            ],
+          ),
+          body: Container(
+            color: Colors.red,
+            width: 200,
+            height: 200,
+          ),
+        );
+      },
     );
   }
 }
